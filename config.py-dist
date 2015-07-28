@@ -1,0 +1,12 @@
+auth = {
+    'user': '',
+    'password': '',
+    # Or in alternative, a more secure PAF token
+    'pat': '',
+}
+
+
+weights = {
+    'BTC': 1,
+    'EUR': 1
+}
