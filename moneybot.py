@@ -87,11 +87,18 @@ class MoneyBot(object):
 
         if self.cards[potential_sources[0]] == self.cards[potential_destinations[0]]:
             return None, None, None
+
+        value = min(
+            abs(self.cards[potential_sources[0]]['difference']),
+            abs(self.cards[potential_destinations[0]]['difference'])
+        )
+
+        value = "{0:.3f}".format(value)
         
         return (
             self.cards[potential_sources[0]],
             self.cards[potential_destinations[0]],
-            min(abs(self.cards[potential_sources[0]]['difference']), abs(self.cards[potential_destinations[0]]['difference']))
+            value
         )
         
     def run(self):
@@ -99,7 +106,7 @@ class MoneyBot(object):
         source, destination, amount = self.calculate_next_transaction()
 
         if not source:
-            print('nothing to do')
+        #    print('nothing to do')
             return
 
         print('Transfer {} {} from {} to {}.'.format(amount, self.currency, source['address'], destination['address']))
@@ -111,6 +118,4 @@ class MoneyBot(object):
 
 if __name__ == '__main__':
     scrooge = MoneyBot()
-    while 1:
-        scrooge.run()
-        sleep(20)
+    scrooge.run()
