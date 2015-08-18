@@ -1,7 +1,7 @@
 auth = {
     'user': '',
     'password': '',
-    # Or in alternative, a more secure PAF token
+    # Or in alternative, a more secure PAT token
     'pat': '',
 }
 
